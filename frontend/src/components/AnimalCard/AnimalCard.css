@@ -1,0 +1,207 @@
+.animal-card {
+  background: var(--white);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--gray-200);
+}
+
+.animal-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-5px);
+}
+
+.animal-image {
+  width: 100%;
+  height: 480px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gray-100);
+}
+
+.animal-image img {
+  width: 112%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 18px;
+  transition: var(--transition);
+}
+
+.animal-card:hover .animal-image img {
+  transform: scale(1.05);
+}
+
+.animal-status {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.status-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status-badge.available {
+  background: var(--success-500);
+  color: var(--white);
+}
+
+.favorite-btn {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+  font-size: 1.2rem;
+  color: var(--gray-600);
+}
+
+.favorite-btn:hover {
+  background: var(--white);
+  transform: scale(1.1);
+  color: var(--danger-500);
+}
+
+.animal-info {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.animal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.animal-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--gray-900);
+  margin: 0;
+}
+
+.animal-species {
+  font-size: 1.25rem;
+  color: var(--primary-500);
+}
+
+.animal-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--gray-600);
+  font-size: 0.875rem;
+}
+
+.detail-item i {
+  width: 1rem;
+  color: var(--primary-500);
+}
+
+.health-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.health-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+  background: var(--success-50) !important;
+  color: var(--success-700) !important;
+  font-weight: 600;
+  border-radius: 12px;
+  padding: 0.25rem 0.8rem;
+  font-size: 0.95rem;
+  border: 1px solid var(--success-500) !important;
+}
+
+.health-badge i {
+  color: var(--success-600) !important;
+  font-size: 1em;
+}
+
+.animal-location {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--gray-600);
+  font-size: 0.875rem;
+  margin-bottom: 1.5rem;
+}
+
+.location-icon {
+  color: var(--primary-500);
+}
+
+.animal-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: auto;
+}
+
+.animal-actions .btn {
+  text-align: center;
+  padding: 0.75rem;
+  font-size: 0.875rem;
+  justify-content: center;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .animal-image {
+    height: 260px; /* aumenta também no mobile */
+  }
+
+  .animal-info {
+    padding: 1rem;
+  }
+
+  .animal-name {
+    font-size: 1.25rem;
+  }
+
+  .animal-actions {
+    gap: 0.5rem;
+  }
+
+  .animal-actions .btn {
+    padding: 0.6rem;
+    font-size: 0.8rem;
+  }
+}
