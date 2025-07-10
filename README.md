@@ -1,5 +1,4 @@
-
-# AdotePet Frontend
+# AdotePet 
 
 Aplicação web para adoção de animais, desenvolvida em React.
 
@@ -78,6 +77,18 @@ src/
 
 - Todos os dados são mockados para demonstração.
 - Para integração real, basta adaptar os serviços de API para consumir um backend.
+
+---
+
+## 🤝 Colaboração
+
+Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar pull requests com melhorias, correções ou novas funcionalidades.
+
+---
+
+## 🚧 Status do Projeto
+
+Este projeto está em andamento e pode receber atualizações
 
 ---
 
