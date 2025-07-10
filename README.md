@@ -1,9 +1,15 @@
+
 # AdotePet Frontend
 
 Aplicação web para adoção de animais, desenvolvida em React.
 
 ---
 
+## 🖼️ Imagens do Projeto
+
+![Home](./imgs/home.png)
+![Formulário de Adoção](./imgs/form-adoção.png)
+![Cadastro de Usuário](./imgs/register.png)
 ## ✨ Sobre
 
 O **AdotePet** é uma plataforma que conecta pessoas interessadas em adotar animais a ONGs e protetores. O sistema permite visualizar todos os animais disponíveis para adoção, aplicar filtros por espécie, porte e localização, acessar uma página de detalhes de cada animal (com fotos, informações de saúde e localização), e simular o processo de adoção online. Usuários podem se cadastrar, fazer login, editar seu perfil e acompanhar suas solicitações. Há também um painel administrativo (simulado) para gerenciar animais, adoções e usuários, tudo feito no frontend, sem backend ativo.
