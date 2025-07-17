@@ -2,13 +2,12 @@
 
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
-import AnimalCard from "../../components/AnimalCard/AnimalCard"
 import { animalsAPI } from "../../services/api"
 import adocaoCachorro from "../../assets/images/adocao-cachorro.jpg"
 import "./Home.css"
 
 const Home = () => {
-  const [featuredAnimals, setFeaturedAnimals] = useState([])
+  const [ setFeaturedAnimals] = useState([])
   const [stats, setStats] = useState({
     total: 335,
     available: 327,
@@ -17,24 +16,24 @@ const Home = () => {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetchData()
-  }, [])
+    const fetchData = async () => {
+      try {
+        // Fetch stats
+        const statsResponse = await animalsAPI.getStats()
+        setStats(statsResponse.data)
 
-  const fetchData = async () => {
-    try {
-      // Fetch stats
-      const statsResponse = await animalsAPI.getStats()
-      setStats(statsResponse.data)
-
-      // Fetch featured animals
-      const animalsResponse = await animalsAPI.getAnimals({ per_page: 3 })
-      setFeaturedAnimals(animalsResponse.data.animals)
-    } catch (error) {
-      console.error("Error fetching data:", error)
-    } finally {
-      setLoading(false)
+        // Fetch featured animals
+        const animalsResponse = await animalsAPI.getAnimals({ per_page: 3 })
+        setFeaturedAnimals(animalsResponse.data.animals)
+      } catch (error) {
+        console.error("Error fetching data:", error)
+      } finally {
+        setLoading(false)
+      }
     }
-  }
+    fetchData()
+  },
+)
 
   return (
     <div className="home">
@@ -117,45 +116,6 @@ const Home = () => {
                 <div className="stat-label">Esperando um Lar</div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Animals */}
-      <section className="featured-section">
-        <div className="container">
-          <div className="section-header">
-            <h2 className="section-title">Animais em Destaque</h2>
-            <p className="section-subtitle">
-              Conheça alguns dos nossos amiguinhos especiais que estão procurando uma família
-            </p>
-          </div>
-
-          {loading ? (
-            <div className="loading-grid">
-              {[1, 2, 3].map((i) => (
-                <div key={i} className="loading-card">
-                  <div className="loading-image"></div>
-                  <div className="loading-content">
-                    <div className="loading-line"></div>
-                    <div className="loading-line short"></div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="animals-grid">
-              {featuredAnimals.map((animal) => (
-                <AnimalCard key={animal.id} animal={animal} />
-              ))}
-            </div>
-          )}
-
-          <div className="section-footer">
-            <Link to="/animals" className="btn btn-outline btn-lg">
-              Ver Todos os Animais
-              <i className="fas fa-arrow-right"></i>
-            </Link>
           </div>
         </div>
       </section>

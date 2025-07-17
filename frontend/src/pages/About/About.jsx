@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import "./About.css"
 
 const About = () => {
@@ -112,57 +113,30 @@ const About = () => {
         <div className="container">
           <div className="section-header">
             <h2 className="section-title">Nossa Equipe</h2>
-            <p className="section-subtitle">Conheça as pessoas dedicadas que tornam nossa missão possível</p>
+            <p className="section-subtitle">
+              Conheça as pessoas dedicadas que tornam nossa missão possível
+            </p>
           </div>
-
           <div className="team-grid">
             <div className="team-card">
-              <div className="team-image">
-                <img
-                  src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=300&h=300&fit=crop&crop=face"
-                  alt="Maria Silva"
-                />
-              </div>
-              <div className="team-info">
-                <h3 className="team-name">Maria Silva</h3>
-                <p className="team-role">Fundadora & Diretora</p>
-                <p className="team-description">
-                  Veterinária apaixonada por animais, fundou o AdotePet com o sonho de reduzir o abandono animal.
-                </p>
-              </div>
+              <div className="team-name"></div>
+              <div className="team-role"></div>
+              <div className="team-description"></div>
             </div>
-
             <div className="team-card">
-              <div className="team-image">
-                <img
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face"
-                  alt="João Santos"
-                />
-              </div>
-              <div className="team-info">
-                <h3 className="team-name">João Santos</h3>
-                <p className="team-role">Coordenador de Adoções</p>
-                <p className="team-description">
-                  Especialista em comportamento animal, responsável por garantir matches perfeitos entre pets e
-                  famílias.
-                </p>
-              </div>
+              <div className="team-name"></div>
+              <div className="team-role"></div>
+              <div className="team-description"></div>
             </div>
-
             <div className="team-card">
-              <div className="team-image">
-                <img
-                  src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop&crop=face"
-                  alt="Ana Costa"
-                />
-              </div>
-              <div className="team-info">
-                <h3 className="team-name">Ana Costa</h3>
-                <p className="team-role">Coordenadora de Voluntários</p>
-                <p className="team-description">
-                  Gerencia nossa rede de voluntários dedicados e organiza eventos de conscientização.
-                </p>
-              </div>
+              <div className="team-name"></div>
+              <div className="team-role"></div>
+              <div className="team-description"></div>
+            </div>
+            <div className="team-card">
+              <div className="team-name"></div>
+              <div className="team-role"></div>
+              <div className="team-description"></div>
             </div>
           </div>
         </div>
@@ -175,7 +149,6 @@ const About = () => {
             <h2 className="section-title">Nosso Impacto</h2>
             <p className="section-subtitle">Números que mostram a diferença que fazemos juntos</p>
           </div>
-
           <div className="impact-grid">
             <div className="impact-card">
               <div className="impact-number">500+</div>
@@ -213,12 +186,12 @@ const About = () => {
               Seja voluntário, adote um animal ou ajude de outras formas. Juntos podemos salvar mais vidas.
             </p>
             <div className="cta-actions">
-              <a href="/contact" className="btn btn-primary btn-lg">
+              <Link to="/contact" className="btn btn-primary btn-lg">
                 Seja Voluntário
-              </a>
-              <a href="/animals" className="btn btn-outline btn-lg">
+              </Link>
+              <Link to="/animals" className="btn btn-outline btn-lg">
                 Adotar Agora
-              </a>
+              </Link>
             </div>
           </div>
         </div>

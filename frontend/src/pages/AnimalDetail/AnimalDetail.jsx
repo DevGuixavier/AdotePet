@@ -3,18 +3,17 @@
 import { useState, useEffect } from "react"
 import { useParams, Link } from "react-router-dom"
 import "./AnimalDetail.css"
+import lunaImg from "../../assets/images/luna.jpg"
 
 const AnimalDetail = () => {
   const { id } = useParams()
   const [animal, setAnimal] = useState(null)
   const [loading, setLoading] = useState(true)
-  const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
   useEffect(() => {
     const fetchAnimal = async () => {
       setLoading(true)
 
-      // Simular dados do animal
       const mockAnimal = {
         id: Number.parseInt(id),
         name: "Luna",
@@ -27,11 +26,7 @@ const AnimalDetail = () => {
         temperament: "Dócil, brincalhona, carinhosa",
         description:
           "Luna é uma cachorrinha muito especial que chegou até nós após ser encontrada abandonada. Ela é extremamente carinhosa e adora a companhia de pessoas. É muito brincalhona e se adapta bem a apartamentos. Luna já está acostumada com crianças e se dá bem com outros animais.",
-        images: [
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/luna.jpg-YeOhCDibxlR6dtxDcB3NL8gUqcLwwx.jpeg",
-          "https://images.unsplash.com/photo-1552053831-71594a27632d?w=600&h=400&fit=crop",
-          "https://images.unsplash.com/photo-1551717743-4995b6ee9643?w=600&h=400&fit=crop",
-        ],
+        images: [lunaImg], // apenas a imagem local
         location: "São Paulo, SP",
         vaccinated: true,
         neutered: true,
@@ -54,14 +49,6 @@ const AnimalDetail = () => {
 
     fetchAnimal()
   }, [id])
-
-  const nextImage = () => {
-    setCurrentImageIndex((prev) => (prev === animal.images.length - 1 ? 0 : prev + 1))
-  }
-
-  const prevImage = () => {
-    setCurrentImageIndex((prev) => (prev === 0 ? animal.images.length - 1 : prev - 1))
-  }
 
   if (loading) {
     return (
@@ -105,43 +92,15 @@ const AnimalDetail = () => {
           <div className="animal-gallery">
             <div className="main-image">
               <img
-                src={animal.images[currentImageIndex] || "/placeholder.svg"}
-                alt={`${animal.name} - Foto ${currentImageIndex + 1}`}
+                src={animal.images[0]}
+                alt={animal.name}
                 onError={(e) => {
                   e.target.src = "https://via.placeholder.com/600x400?text=Foto+não+disponível"
                 }}
               />
-              {animal.images.length > 1 && (
-                <>
-                  <button className="nav-btn prev-btn" onClick={prevImage}>
-                    ‹
-                  </button>
-                  <button className="nav-btn next-btn" onClick={nextImage}>
-                    ›
-                  </button>
-                </>
-              )}
               <div className="status-badge available">Disponível</div>
             </div>
-
-            {animal.images.length > 1 && (
-              <div className="thumbnail-gallery">
-                {animal.images.map((image, index) => (
-                  <img
-                    key={index}
-                    src={image || "/placeholder.svg"}
-                    alt={`${animal.name} - Miniatura ${index + 1}`}
-                    className={`thumbnail ${index === currentImageIndex ? "active" : ""}`}
-                    onClick={() => setCurrentImageIndex(index)}
-                    onError={(e) => {
-                      e.target.src = "https://via.placeholder.com/100x100?text=Foto"
-                    }}
-                  />
-                ))}
-              </div>
-            )}
           </div>
-
           <div className="animal-info">
             <div className="animal-header">
               <h1 className="animal-name">{animal.name}</h1>
@@ -189,7 +148,6 @@ const AnimalDetail = () => {
                   {animal.neutered && <span className="health-badge">✓ Castrado</span>}
                   {animal.microchipped && <span className="health-badge">✓ Microchipado</span>}
                 </div>
-
                 {animal.vaccines && animal.vaccines.length > 0 && (
                   <div className="vaccines">
                     <h4>Vacinas:</h4>
@@ -202,7 +160,6 @@ const AnimalDetail = () => {
                     </div>
                   </div>
                 )}
-
                 {animal.healthNotes && (
                   <div className="health-notes">
                     <h4>Observações:</h4>
@@ -215,12 +172,10 @@ const AnimalDetail = () => {
             <div className="description-card">
               <h3>Sobre {animal.name}</h3>
               <p className="description">{animal.description}</p>
-
               <div className="temperament">
                 <h4>Temperamento:</h4>
                 <p>{animal.temperament}</p>
               </div>
-
               <div className="rescue-info">
                 <p>
                   <strong>Data de resgate:</strong> {animal.rescueDate}
@@ -231,7 +186,6 @@ const AnimalDetail = () => {
             <div className="contact-card">
               <h3>Interessado em adotar {animal.name}?</h3>
               <p>Entre em contato conosco para saber mais sobre o processo de adoção.</p>
-
               <div className="contact-info">
                 <div className="contact-item">
                   <span className="contact-icon">🏢</span>
@@ -246,7 +200,6 @@ const AnimalDetail = () => {
                   <span>{animal.contact.email}</span>
                 </div>
               </div>
-
               <div className="action-buttons">
                 <Link to="/adoption" className="btn btn-primary btn-lg">
                   Quero Adotar {animal.name}

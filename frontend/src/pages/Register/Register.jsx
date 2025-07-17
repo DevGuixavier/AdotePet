@@ -94,6 +94,7 @@ const Register = () => {
       if (result.success) {
         success("Conta criada com sucesso!")
         navigate("/")
+        window.location.reload() // Força atualização visual após registro
       } else {
         error(result.message)
       }

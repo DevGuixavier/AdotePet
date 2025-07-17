@@ -117,9 +117,10 @@
 
 .team-card {
   background: var(--white);
+  padding: 3rem 2rem; /* igual ao .impact-card */
   border-radius: var(--border-radius-lg);
   box-shadow: var(--shadow);
-  overflow: hidden;
+  text-align: center;
   transition: var(--transition);
   border: 1px solid var(--gray-200);
 }
@@ -149,7 +150,7 @@
   font-size: 1.25rem;
   font-weight: 600;
   color: var(--gray-900);
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .team-role {

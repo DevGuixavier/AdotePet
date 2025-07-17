@@ -29,8 +29,13 @@
 
 .main-image img {
   width: 100%;
-  height: 400px;
-  object-fit: cover;
+  height: auto;
+  max-height: 400px; /* ajuste conforme necessário */
+  object-fit: contain; /* mostra a imagem inteira sem cortar */
+  display: block;
+  margin: 0 auto;
+  background: #f8f8f8;
+  border-radius: 1rem;
 }
 
 .nav-btn {
@@ -106,6 +111,7 @@
   text-align: center;
   padding-bottom: 1rem;
   border-bottom: 2px solid var(--gray-200);
+  margin-bottom: 1.5rem;
 }
 
 .animal-name {
@@ -125,8 +131,11 @@
 
 .info-cards {
   display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+  flex-direction: row;
+  gap: 2.5rem;
+  margin-bottom: 2rem;
+  justify-content: center;
+  align-items: stretch;
 }
 
 .info-card,
@@ -136,6 +145,15 @@
   padding: 1.5rem;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
+}
+
+.info-card {
+  flex: 1 1 0;
+  min-width: 240px;
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .info-card h3,
@@ -171,6 +189,8 @@
 .value {
   color: var(--dark-color);
   font-weight: 600;
+  word-break: break-word;
+  text-align: right;
 }
 
 .health-badges {
@@ -312,5 +332,63 @@
 
   .action-buttons .btn {
     min-width: auto;
+  }
+}
+
+/* Espaçamento e alinhamento dos cards */
+.info-cards {
+  display: flex;
+  flex-direction: row;
+  gap: 2.5rem;
+  margin-bottom: 2rem;
+  justify-content: center;
+  align-items: stretch;
+}
+
+/* Cards do mesmo tamanho */
+.info-card {
+  flex: 1 1 0;
+  min-width: 240px;
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* Ajuste para textos longos não quebrarem layout */
+.info-item .value {
+  word-break: break-word;
+  text-align: right;
+}
+
+/* Centralizar título e localização */
+.animal-header {
+  text-align: center;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--gray-200);
+  margin-bottom: 1.5rem;
+}
+
+/* Imagem centralizada e com espaçamento */
+.animal-gallery {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 1rem 0;
+}
+
+/* Responsivo para mobile */
+@media (max-width: 900px) {
+  .animal-detail {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .info-cards {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+  .animal-gallery {
+    padding: 0;
   }
 }

@@ -5,6 +5,7 @@ import AnimalCard from "../../components/AnimalCard/AnimalCard"
 import SearchFilters from "../../components/SearchFilters/SearchFilters"
 import "./Animals.css"
 import lunaImg from "../../assets/images/luna.jpg"
+import BellaImg from "../../assets/images/Bella.png"
 
 const Animals = () => {
   const [animals, setAnimals] = useState([])
@@ -56,7 +57,7 @@ const Animals = () => {
           age: "1 ano",
           breed: "Border Collie",
           size: "Médio",
-          image: "https://images.unsplash.com/photo-1551717743-4995b6ee9643?w=400&h=300&fit=crop",
+          image: BellaImg,
           location: "São Paulo, SP",
           vaccinated: true,
           neutered: true,
