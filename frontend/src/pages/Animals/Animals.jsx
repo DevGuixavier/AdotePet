@@ -6,6 +6,7 @@ import SearchFilters from "../../components/SearchFilters/SearchFilters"
 import "./Animals.css"
 import lunaImg from "../../assets/images/luna.jpg"
 import BellaImg from "../../assets/images/Bella.png"
+import charlieImg from "../../assets/images/Charlie.png"
 
 const Animals = () => {
   const [animals, setAnimals] = useState([])
@@ -66,10 +67,10 @@ const Animals = () => {
         {
           id: 4,
           name: "Charlie",
-          age: "4 anos",
+          age: "2 anos",
           breed: "Beagle",
           size: "Médio",
-          image: "https://images.unsplash.com/photo-1544717297-fa95b6ee7dee?w=400&h=300&fit=crop",
+          image: charlieImg,
           location: "Belo Horizonte, MG",
           vaccinated: false,
           neutered: true,
