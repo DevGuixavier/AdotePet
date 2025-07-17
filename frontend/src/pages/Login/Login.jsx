@@ -175,6 +175,21 @@ const Login = () => {
           </div>
         </div>
       </div>
+
+      <div className="login-mock-info" style={{ marginBottom: "1.5rem", background: "#fff8e1", borderRadius: "8px", padding: "1rem", border: "1px solid #ffe0b2" }}>
+        <strong>Para testar:</strong>
+        <ul style={{ margin: "0.5rem 0 0 1.2rem", padding: 0 }}>
+          <li>
+            <b>Usuário comum:</b> <span style={{ fontFamily: "monospace" }}>usuario@teste.com</span>
+          </li>
+          <li>
+            <b>Administrador:</b> <span style={{ fontFamily: "monospace" }}>admin@adotepet.com</span>
+          </li>
+          <li>
+            <b>Senha:</b> <span style={{ fontFamily: "monospace" }}>!#02072024!4a</span>
+          </li>
+        </ul>
+      </div>
     </div>
   )
 }
