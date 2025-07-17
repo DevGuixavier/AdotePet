@@ -28,9 +28,9 @@ import NotFound from "./pages/NotFound/NotFound"
 
 function App() {
   return (
-    <AuthProvider>
-      <ToastProvider>
-        <Router>
+    <Router>
+      <AuthProvider>
+        <ToastProvider>
           <div className="App">
             <Header />
             <main className="main-content">
@@ -89,9 +89,9 @@ function App() {
             <Footer />
             <Toast />
           </div>
-        </Router>
-      </ToastProvider>
-    </AuthProvider>
+        </ToastProvider>
+      </AuthProvider>
+    </Router>
   )
 }
 
