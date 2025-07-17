@@ -1,5 +1,3 @@
-"use client"
-
 import { createContext, useContext, useState } from "react"
 
 const ToastContext = createContext()
@@ -15,6 +13,10 @@ export const useToast = () => {
 export const ToastProvider = ({ children }) => {
   const [toasts, setToasts] = useState([])
 
+  const removeToast = (id) => {
+    setToasts((prev) => prev.filter((toast) => toast.id !== id))
+  }
+
   const addToast = (message, type = "info", duration = 5000) => {
     const id = Date.now()
     const toast = { id, message, type, duration }
@@ -28,10 +30,6 @@ export const ToastProvider = ({ children }) => {
     }
 
     return id
-  }
-
-  const removeToast = (id) => {
-    setToasts((prev) => prev.filter((toast) => toast.id !== id))
   }
 
   const success = (message, duration) => addToast(message, "success", duration)

@@ -1,6 +1,6 @@
 "use client"
 
-import { createContext, useContext, useState, useEffect } from "react"
+import { createContext, useContext, useState, useEffect, useCallback } from "react"
 import { authAPI } from "../services/api"
 
 const AuthContext = createContext()
@@ -14,19 +14,21 @@ export const useAuth = () => {
 }
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState(() => {
+    const storedUser = localStorage.getItem("user")
+    return storedUser ? JSON.parse(storedUser) : null
+  })
   const [loading, setLoading] = useState(true)
   const [token, setToken] = useState(localStorage.getItem("token"))
 
-  useEffect(() => {
-    if (token) {
-      fetchUser()
-    } else {
-      setLoading(false)
-    }
-  }, [token])
+  const logout = useCallback(() => {
+    setUser(null)
+    setToken(null)
+    localStorage.removeItem("token")
+    localStorage.removeItem("user")
+  }, [])
 
-  const fetchUser = async () => {
+  const fetchUser = useCallback(async () => {
     try {
       const response = await authAPI.getCurrentUser()
       setUser(response.data.user)
@@ -36,28 +38,60 @@ export const AuthProvider = ({ children }) => {
     } finally {
       setLoading(false)
     }
-  }
+  }, [logout])
+
+  useEffect(() => {
+    if (token) {
+      fetchUser()
+    } else {
+      setLoading(false)
+    }
+  }, [token, fetchUser])
 
   const login = async (email, password) => {
-    try {
-      const response = await authAPI.login({ email, password })
-      const { user, token } = response.data
-
-      setToken(token)
-      setUser(user)
-      localStorage.setItem("token", token)
-      localStorage.setItem("user", JSON.stringify(user))
-
-      return { success: true, message: response.data.message }
-    } catch (error) {
-      const message = error.response?.data?.error || "Erro de conexão"
-      return { success: false, message }
+    if (!email || !password) {
+      return { success: false, message: "Preencha e-mail e senha." }
     }
+    // Exemplo: senha fixa "!#02072024!4a"
+    if (password !== "!#02072024!4a") {
+      return { success: false, message: "Senha incorreta." }
+    }
+    const fakeUser = {
+      id: 1,
+      full_name: "Usuário Demo",
+      email,
+      is_admin: email === "admin@adotepet.com",
+    }
+    const fakeToken = "fake-token"
+
+    setToken(fakeToken)
+    setUser(fakeUser)
+    localStorage.setItem("token", fakeToken)
+    localStorage.setItem("user", JSON.stringify(fakeUser))
+
+    return { success: true, message: "Login simulado com sucesso!" }
   }
 
   const register = async (userData) => {
     try {
-      const response = await authAPI.register(userData)
+      // Mock register API call
+      const response = await new Promise((resolve) => {
+        setTimeout(() => {
+          resolve({
+            data: {
+              user: {
+                id: 2,
+                full_name: userData.full_name,
+                email: userData.email,
+                is_admin: false,
+              },
+              token: "fake-token",
+              message: "Registro simulado com sucesso!",
+            },
+          })
+        }, 500)
+      })
+
       const { user, token } = response.data
 
       setToken(token)
@@ -70,13 +104,6 @@ export const AuthProvider = ({ children }) => {
       const message = error.response?.data?.error || "Erro de conexão"
       return { success: false, message }
     }
-  }
-
-  const logout = () => {
-    setUser(null)
-    setToken(null)
-    localStorage.removeItem("token")
-    localStorage.removeItem("user")
   }
 
   const value = {
