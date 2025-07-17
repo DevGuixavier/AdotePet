@@ -15,20 +15,6 @@ const Footer = () => {
               Conectando animais abandonados com famílias amorosas. Juntos, podemos fazer a diferença na vida desses
               pequenos seres.
             </p>
-            <div className="social-links">
-              <a href="https://facebook.com" className="social-link" aria-label="Facebook">
-                📘
-              </a>
-              <a href="https://instagram.com" className="social-link" aria-label="Instagram">
-                📷
-              </a>
-              <a href="https://twitter.com" className="social-link" aria-label="Twitter">
-                🐦
-              </a>
-              <a href="https://youtube.com" className="social-link" aria-label="YouTube">
-                📺
-              </a>
-            </div>
           </div>
 
           <div className="footer-section">
@@ -53,27 +39,6 @@ const Footer = () => {
           </div>
 
           <div className="footer-section">
-            <h3 className="footer-title">Ajuda</h3>
-            <ul className="footer-links">
-              <li>
-                <button type="button" className="footer-link-btn">FAQ</button>
-              </li>
-              <li>
-                <button type="button" className="footer-link-btn">Termos de Uso</button>
-              </li>
-              <li>
-                <button type="button" className="footer-link-btn">Política de Privacidade</button>
-              </li>
-              <li>
-                <button type="button" className="footer-link-btn">Suporte</button>
-              </li>
-              <li>
-                <button type="button" className="footer-link-btn">Denunciar</button>
-              </li>
-            </ul>
-          </div>
-
-          <div className="footer-section">
             <h3 className="footer-title">Contato</h3>
             <div className="contact-info">
               <p>📧 contato@adotepet.com</p>
@@ -91,8 +56,8 @@ const Footer = () => {
         </div>
 
         <div className="footer-bottom">
-          <p>&copy; 2024 AdotePet. Todos os direitos reservados.</p>
-          <p>Feito com ❤️ para ajudar animais a encontrarem um lar.</p>
+          <p>&copy; 2025 AdotePet. Todos os direitos reservados.</p>
+          <p>Feito para ajudar animais a encontrarem um lar.</p>
         </div>
       </div>
     </footer>
