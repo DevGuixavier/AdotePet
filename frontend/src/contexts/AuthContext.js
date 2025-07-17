@@ -56,11 +56,14 @@ export const AuthProvider = ({ children }) => {
     if (password !== "!#02072024!4a") {
       return { success: false, message: "Senha incorreta." }
     }
+
+    // Define nome diferente para admin e usuário comum
+    const isAdmin = email === "admin@adotepet.com"
     const fakeUser = {
       id: 1,
-      full_name: "Usuário Demo",
+      full_name: isAdmin ? "Administrador" : "Usuário Demo",
       email,
-      is_admin: email === "admin@adotepet.com",
+      is_admin: isAdmin,
     }
     const fakeToken = "fake-token"
 
